@@ -1,0 +1,71 @@
+Table users {
+  id bigint [pk, increment]
+  name varchar
+  email varchar [unique]
+  email_verified_at timestamp [null]
+  password varchar
+  is_admin boolean [default: false]
+  remember_token varchar [null]
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table categories {
+  id bigint [pk, increment]
+  name varchar
+  slug varchar [unique]
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table products {
+  id bigint [pk, increment]
+  category_id bigint
+  name varchar
+  slug varchar [unique]
+  barcode varchar [unique, null]
+  description text
+  price decimal(8,2)
+  stock integer
+  image_path varchar [null]
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table cart_product {
+  id bigint [pk, increment]
+  user_id bigint
+  product_id bigint
+  quantity integer [default: 1]
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table orders {
+  id bigint [pk, increment]
+  user_id bigint
+  total_price decimal(8,2)
+  status varchar
+  shipping_address text
+  payment_intent_id varchar [null]
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table order_product {
+  id bigint [pk, increment]
+  order_id bigint
+  product_id bigint [null]
+  quantity integer
+  price decimal(8,2)
+  created_at timestamp
+  updated_at timestamp
+}
+
+// Relations et Clés Étrangères
+Ref: products.category_id > categories.id [delete: cascade]
+Ref: cart_product.user_id > users.id [delete: cascade]
+Ref: cart_product.product_id > products.id [delete: cascade]
+Ref: orders.user_id > users.id
+Ref: order_product.order_id > orders.id [delete: cascade]
+Ref: order_product.product_id > products.id [delete: set null]

@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
     'category_id',
     'name',
     'slug',
+    'barcode',
     'description',
     'price',
     'stock',

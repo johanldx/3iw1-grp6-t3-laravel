@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-#[Fillable(['name', 'email', 'password'])]
+#[Fillable(['name', 'email', 'password', 'is_admin'])]
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
@@ -18,7 +18,7 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     /**
-     * Get the attributes that should be cast.
+     * Obtenir les attributs à convertir (casting).
      *
      * @return array<string, string>
      */
@@ -27,6 +27,27 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_admin' => 'boolean',
         ];
     }
+
+    /**
+     * Relation : Produits dans le panier de l'utilisateur (relation Many-to-Many).
+     */
+    public function cart()
+    {
+        return $this->belongsToMany(Product::class, 'cart_product')
+                    ->using(CartProduct::class)
+                    ->withPivot('id', 'quantity')
+                    ->withTimestamps();
+    }
+
+    /**
+     * Relation : Commandes passées par l'utilisateur (relation One-to-Many).
+     */
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }
+

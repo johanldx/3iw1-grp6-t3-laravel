@@ -65,6 +65,14 @@ Afin d'assurer une collaboration fluide, d'éviter les conflits de fusion (merge
 *   **Interface Checkout (Vue Blade) :**
     *   Créer la vue `resources/views/checkout/index.blade.php`. *(Cette vue servira de conteneur pour l'intégration de la solution de paiement sécurisé).*
 
+### 3. Gestion des Commandes
+*   **Création et Suivi des Commandes :**
+    *   Développer la logique de création de commande à partir du panier validé par l'utilisateur.
+    *   Prévoir l'affichage simple des informations principales d'une commande (utilisateur, total, statut, adresse de livraison).
+*   **Back-Office Léger de Consultation :**
+    *   Ajouter une interface d'administration simple permettant de consulter la liste des commandes.
+    *   Prévoir au minimum une page d'index des commandes pour faciliter les démonstrations et les tests.
+
 ---
 
 ## 💳 DÉVELOPPEUR C : Tunnel de Paiement, Traitements Webhooks & Facturation

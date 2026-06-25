@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 #[Fillable([
     'category_id',
@@ -18,7 +20,18 @@ use Illuminate\Database\Eloquent\Model;
 ])]
 class Product extends Model
 {
-    use HasFactory;
+    use HasFactory, HasSlug;
+
+    /**
+     * Génère automatiquement un slug unique à partir du nom.
+     */
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('name')
+            ->saveSlugsTo('slug')
+            ->doNotGenerateSlugsOnUpdate();
+    }
 
     /**
      * Obtenir les attributs à convertir (casting).
@@ -47,9 +60,9 @@ class Product extends Model
     public function cartUsers()
     {
         return $this->belongsToMany(User::class, 'cart_product')
-                    ->using(CartProduct::class)
-                    ->withPivot('id', 'quantity')
-                    ->withTimestamps();
+            ->using(CartProduct::class)
+            ->withPivot('id', 'quantity')
+            ->withTimestamps();
     }
 
     /**
@@ -58,8 +71,8 @@ class Product extends Model
     public function orders()
     {
         return $this->belongsToMany(Order::class, 'order_product')
-                    ->using(OrderProduct::class)
-                    ->withPivot('id', 'quantity', 'price')
-                    ->withTimestamps();
+            ->using(OrderProduct::class)
+            ->withPivot('id', 'quantity', 'price')
+            ->withTimestamps();
     }
 }

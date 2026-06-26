@@ -59,7 +59,7 @@ class ProductFactory extends Factory
     ];
 
     /**
-     * Define the model's default state.
+     * Definit l'etat par defaut du modele.
      *
      * @return array<string, mixed>
      */

@@ -11,7 +11,7 @@ use Illuminate\View\View;
 class AdminCategoryController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Affiche la liste des categories.
      */
     public function index(): View
     {
@@ -24,7 +24,7 @@ class AdminCategoryController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Affiche le formulaire de creation d'une categorie.
      */
     public function create(): View
     {
@@ -32,7 +32,7 @@ class AdminCategoryController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Enregistre une nouvelle categorie.
      */
     public function store(StoreCategoryRequest $request): RedirectResponse
     {
@@ -44,7 +44,7 @@ class AdminCategoryController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Affiche le formulaire de modification d'une categorie.
      */
     public function edit(Category $category): View
     {
@@ -54,7 +54,7 @@ class AdminCategoryController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Met a jour la categorie specifiee.
      */
     public function update(UpdateCategoryRequest $request, Category $category): RedirectResponse
     {
@@ -66,7 +66,7 @@ class AdminCategoryController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Supprime la categorie de la base de donnees.
      */
     public function destroy(Category $category): RedirectResponse
     {

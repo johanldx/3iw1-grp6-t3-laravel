@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 class AdminMiddleware
 {
     /**
-     * Handle an incoming request.
+     * Gere une requete entrante.
      *
      * @param  Closure(Request): Response  $next
      */

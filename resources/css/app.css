@@ -50,6 +50,18 @@
         @apply text-[#2f2a26];
     }
 
+    .store-icon-button {
+        @apply relative inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#d8c6ba] bg-white text-[#6c5a50] shadow-[0_10px_25px_-18px_rgba(88,65,52,0.5)] transition hover:-translate-y-0.5 hover:bg-[#fcf8f5] hover:text-[#2f2a26];
+    }
+
+    .store-icon-button-active {
+        @apply border-[#6b4f43] bg-[#6b4f43] text-white hover:bg-[#5b4338] hover:text-white;
+    }
+
+    .store-cart-badge {
+        @apply absolute -right-1.5 -top-1.5 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-[#d58c69] px-1 text-[10px] font-semibold leading-none text-white ring-2 ring-[#fffaf6];
+    }
+
     .store-hero {
         @apply relative overflow-hidden rounded-[2rem] border border-[#eaded5] bg-[linear-gradient(180deg,#fffaf6_0%,#fbf4ef_100%)] px-10 py-12;
     }
@@ -130,6 +142,126 @@
 
     .store-detail-card {
         @apply rounded-[1.25rem] border border-[#eaded5] bg-[#fcf8f5] p-4;
+    }
+
+    .store-form-input {
+        @apply rounded-xl border border-[#d8c6ba] bg-white px-3 py-2 text-sm text-[#2f2a26] outline-none transition focus:border-[#6b4f43] focus:ring-0;
+    }
+
+    .store-button-danger {
+        @apply inline-flex items-center rounded-full border border-[#efc9c0] bg-[#fff5f3] px-5 py-2.5 text-sm font-medium text-[#b45443] transition hover:bg-[#fdebe7];
+    }
+
+    .store-alert-success {
+        @apply mb-4 rounded-2xl border border-[#d4e7d7] bg-[#f2faf3] px-5 py-4 text-sm font-medium text-[#3d6d46];
+    }
+
+    .store-alert-error {
+        @apply mb-4 rounded-2xl border border-[#edd4cf] bg-[#fff5f2] px-5 py-4 text-sm font-medium text-[#9b4e43];
+    }
+
+    .store-table {
+        @apply min-w-full border-collapse bg-white;
+    }
+
+    .store-table thead {
+        @apply bg-[#fcf7f3];
+    }
+
+    .store-table th {
+        @apply px-6 py-4 text-left text-xs font-semibold uppercase tracking-wide text-[#8a7668];
+    }
+
+    .store-table td {
+        @apply border-t border-[#f0e4db] px-6 py-5 align-middle text-sm text-[#6f6158];
+    }
+
+    .store-table-price {
+        @apply text-sm font-semibold text-[#2f2a26];
+    }
+
+    .store-cart-image {
+        @apply flex h-16 w-16 items-center justify-center overflow-hidden rounded-2xl bg-[linear-gradient(135deg,#f7ede7_0%,#f2ddd2_100%)] text-xs font-medium text-[#b19383];
+    }
+
+    .store-cart-image-large {
+        @apply h-28 w-28 rounded-[1.5rem];
+    }
+
+    .store-cart-card {
+        @apply rounded-[1.75rem] border border-[#eaded5] bg-white p-6 shadow-[0_20px_45px_-30px_rgba(88,65,52,0.35)];
+    }
+
+    .store-cart-main {
+        @apply flex gap-6;
+    }
+
+    .store-cart-info {
+        @apply min-w-0 flex-1;
+    }
+
+    .store-cart-qty-form {
+        @apply flex items-center gap-3;
+    }
+
+    .store-cart-actions {
+        @apply mt-6 flex items-end justify-between gap-6 border-t border-[#f0e4db] pt-6;
+    }
+
+    .store-cart-side {
+        @apply flex items-end gap-6;
+    }
+
+    .store-cart-summary-card {
+        @apply flex h-fit flex-col gap-5 rounded-[1.75rem] border border-[#eaded5] bg-white p-6 shadow-[0_20px_45px_-30px_rgba(88,65,52,0.35)] xl:sticky xl:top-24;
+    }
+
+    .store-cart-layout {
+        @apply grid gap-8 xl:grid-cols-[minmax(0,1fr)_20rem] xl:items-start;
+    }
+
+    .store-cart-list {
+        @apply min-w-0 space-y-6;
+    }
+
+    .store-cart-item {
+        @apply flex flex-col gap-5 lg:flex-row;
+    }
+
+    .store-cart-media {
+        @apply shrink-0 lg:w-40;
+    }
+
+    .store-cart-visual {
+        @apply h-52 w-full lg:h-40 lg:w-40;
+    }
+
+    .store-cart-header {
+        @apply flex flex-col gap-4 md:flex-row md:items-start md:justify-between;
+    }
+
+    .store-cart-price-card {
+        @apply w-full shrink-0 md:w-44;
+    }
+
+    .store-cart-footer {
+        @apply grid gap-5 border-t border-[#f0e4db] pt-5 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end;
+    }
+
+    .store-cart-form-stack {
+        @apply flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end;
+    }
+
+    .store-cart-input-wrap {
+        @apply w-full sm:w-28;
+    }
+
+    .store-cart-button-row {
+        @apply flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap;
+    }
+
+    .store-cart-subtotal {
+        @apply text-left lg:text-right;
     }
 
     .admin-tabs {

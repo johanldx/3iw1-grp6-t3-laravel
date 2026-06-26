@@ -34,6 +34,14 @@ class Product extends Model
     }
 
     /**
+     * Utilise le slug pour l'association de route à la place de l'id.
+     */
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
+    /**
      * Obtenir les attributs à convertir (casting).
      *
      * @return array<string, string>

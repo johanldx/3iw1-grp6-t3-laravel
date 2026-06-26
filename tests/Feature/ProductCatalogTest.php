@@ -74,7 +74,7 @@ test('public product page displays details and barcode', function () {
         'barcode' => '4006381333931',
     ]);
 
-    $response = $this->get('/products/'.$product->id);
+    $response = $this->get('/products/'.$product->slug);
 
     $response->assertOk();
     $response->assertSee($product->name);

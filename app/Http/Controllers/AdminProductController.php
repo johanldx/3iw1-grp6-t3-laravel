@@ -13,7 +13,7 @@ use Illuminate\View\View;
 class AdminProductController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Affiche la liste des produits.
      */
     public function index(): View
     {
@@ -26,7 +26,7 @@ class AdminProductController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Affiche le formulaire de creation d'un produit.
      */
     public function create(): View
     {
@@ -36,7 +36,7 @@ class AdminProductController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Enregistre un nouveau produit.
      */
     public function store(StoreProductRequest $request): RedirectResponse
     {
@@ -52,7 +52,7 @@ class AdminProductController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Affiche le formulaire de modification d'un produit.
      */
     public function edit(Product $product): View
     {
@@ -63,7 +63,7 @@ class AdminProductController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Met a jour le produit specifie.
      */
     public function update(UpdateProductRequest $request, Product $product): RedirectResponse
     {
@@ -87,7 +87,7 @@ class AdminProductController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Supprime le produit de la base de donnees.
      */
     public function destroy(Product $product): RedirectResponse
     {

@@ -43,6 +43,17 @@
                         <a href="{{ route('profile.edit') }}" class="store-button-secondary">
                             Profil
                         </a>
+
+                        @php
+                            $cartCount = auth()->user()->cart()->sum('cart_product.quantity');
+                        @endphp
+
+                        <a
+                            href="{{ route('cart.index') }}"
+                            class="store-button-secondary"
+                        >
+                            Panier ({{ $cartCount }})
+                        </a>
                     @else
                         <a href="{{ route('login') }}" class="store-button-secondary">
                             Connexion
@@ -57,6 +68,28 @@
         </header>
 
         <main>
+            @if (session('success') || session('error') || $errors->any())
+                <div class="store-shell pt-6">
+                    @if (session('success'))
+                        <div class="store-alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    @if (session('error'))
+                        <div class="store-alert-error">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+
+                    @if ($errors->any())
+                        <div class="store-alert-error">
+                            {{ $errors->first() }}
+                        </div>
+                    @endif
+                </div>
+            @endif
+
             {{ $slot }}
         </main>
     </body>

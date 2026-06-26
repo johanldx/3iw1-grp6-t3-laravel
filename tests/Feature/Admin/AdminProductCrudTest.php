@@ -47,7 +47,7 @@ test('admin can create and update a product with an image', function () {
 
     $updateResponse = $this
         ->actingAs($admin)
-        ->put("/admin/products/{$product->id}", [
+        ->put("/admin/products/{$product->slug}", [
             'category_id' => $otherCategory->id,
             'name' => 'Parfum Rose Douce',
             'barcode' => '4006381333931',

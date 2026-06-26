@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class CategoryFactory extends Factory
 {
     /**
-     * Define the model's default state.
+     * Definit l'etat par defaut du modele.
      *
      * @return array<string, mixed>
      */

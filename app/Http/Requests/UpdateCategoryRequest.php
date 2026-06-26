@@ -10,7 +10,7 @@ use Illuminate\Validation\Rule;
 class UpdateCategoryRequest extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
+     * Determine si l'utilisateur est autorise a effectuer cette requete.
      */
     public function authorize(): bool
     {
@@ -18,7 +18,7 @@ class UpdateCategoryRequest extends FormRequest
     }
 
     /**
-     * Get the validation rules that apply to the request.
+     * Obtient les regles de validation qui s'appliquent a la requete.
      *
      * @return array<string, ValidationRule|array<mixed>|string>
      */

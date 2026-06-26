@@ -13,5 +13,12 @@
         >
             Categories
         </a>
+
+        <a
+            href="{{ route('admin.orders.index') }}"
+            class="admin-tab {{ request()->routeIs('admin.orders.*') ? 'admin-tab-active' : '' }}"
+        >
+            Commandes
+        </a>
     </div>
 </div>

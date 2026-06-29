@@ -102,7 +102,7 @@ class ProductFactory extends Factory
     }
 
     /**
-     * Formate l ingredient pour l integrer dans le nom du produit.
+     * Formate l'ingredient pour l'integrer dans le nom du produit.
      */
     private function formatIngredient(string $ingredient): string
     {

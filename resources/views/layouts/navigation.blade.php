@@ -13,11 +13,19 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     @if (Auth::user()->is_admin)
-                        <x-nav-link :href="route('admin.products.index')" :active="request()->routeIs('admin.*')">
-                            Administration
-                        </x-nav-link>
+                    <x-nav-link :href="route('admin.products.index')" :active="request()->routeIs('admin.*')">
+                        Administration
+                    </x-nav-link>
                     @endif
                 </div>
+            </div>
+
+            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                @if (!Auth::user()->is_admin)
+                <x-nav-link :href="route('profile.orders')" :active="request()->routeIs('profile.orders')">
+                    Commandes
+                </x-nav-link>
+                @endif
             </div>
 
             <!-- Settings Dropdown -->
@@ -45,7 +53,7 @@
                             @csrf
 
                             <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
+                                onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
@@ -70,9 +78,9 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             @if (Auth::user()->is_admin)
-                <x-responsive-nav-link :href="route('admin.products.index')" :active="request()->routeIs('admin.*')">
-                    Administration
-                </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.products.index')" :active="request()->routeIs('admin.*')">
+                Administration
+            </x-responsive-nav-link>
             @endif
         </div>
 
@@ -88,10 +96,14 @@
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
 
+                <x-responsive-nav-link :href="route('profile.orders')" :active="request()->routeIs('profile.orders')">
+                    Commandes
+                </x-responsive-nav-link>
+
                 @if (Auth::user()->is_admin)
-                    <x-responsive-nav-link :href="route('admin.products.index')" :active="request()->routeIs('admin.*')">
-                        Administration
-                    </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('admin.products.index')" :active="request()->routeIs('admin.*')">
+                    Administration
+                </x-responsive-nav-link>
                 @endif
 
                 <!-- Authentication -->
@@ -99,7 +111,7 @@
                     @csrf
 
                     <x-responsive-nav-link :href="route('logout')"
-                            onclick="event.preventDefault();
+                        onclick="event.preventDefault();
                                         this.closest('form').submit();">
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>

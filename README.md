@@ -46,8 +46,56 @@ Notre projet répond en tous points aux critères d'évaluation requis pour la s
 
 ---
 
+## Installation et Lancement (Laravel Sail)
+
+1. **Copier le fichier de configuration d'environnement** :
+   ```bash
+   cp .env.example .env
+   ```
+   *(Pensez à y configurer vos clés Stripe : `STRIPE_KEY`, `STRIPE_SECRET`, `STRIPE_WEBHOOK_SECRET`)*
+
+2. **Démarrer les services Docker** (MySQL, Redis, Mailpit, etc.) :
+   ```bash
+   ./vendor/bin/sail up -d
+   ```
+
+3. **Installer les dépendances** :
+   ```bash
+   ./vendor/bin/sail composer install
+   ./vendor/bin/sail npm install
+   ```
+
+4. **Générer la clé d'application** :
+   ```bash
+   ./vendor/bin/sail artisan key:generate
+   ```
+
+5. **Lier le dossier public au stockage** (indispensable pour l'affichage des images des produits) :
+   ```bash
+   ./vendor/bin/sail artisan storage:link
+   ```
+
+6. **Exécuter les migrations et remplir la base de données** (avec l'administrateur et les produits de test) :
+   ```bash
+   ./vendor/bin/sail artisan migrate:fresh --seed
+   ```
+
+7. **Compiler et lancer le serveur d'assets Vite** :
+   * Pour le développement à chaud (Hot Reload) :
+     ```bash
+     ./vendor/bin/sail npm run dev
+     ```
+   * Pour compiler pour la production :
+     ```bash
+     ./vendor/bin/sail npm run build
+     ```
+
+L'application est ensuite accessible sur [http://localhost](http://localhost).
+
+---
+
 ## Tests de Non-Régression
-L'application contient une suite de **50 tests fonctionnels et unitaires** validant la sécurité des accès, la logique de panier, les validations de formulaires et l'autonomie du back-office.
+L'application contient une suite de **51 tests fonctionnels et unitaires** validant la sécurité des accès, la logique de panier, les validations de formulaires et l'autonomie du back-office.
 
 Pour exécuter les tests :
 ```bash

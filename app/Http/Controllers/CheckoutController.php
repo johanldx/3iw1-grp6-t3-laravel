@@ -70,8 +70,8 @@ class CheckoutController extends Controller
             return view('checkout.success', ['order' => $order]);
         }
 
-        \Stripe\Stripe::setApiKey(config('cashier.secret'));
-        $stripeSession = StripeSession::retrieve($sessionId);
+        $stripe = app(\Stripe\StripeClient::class);
+        $stripeSession = $stripe->checkout->sessions->retrieve($sessionId);
 
         if ($stripeSession->payment_status !== 'paid') {
             return redirect()->route('checkout.index')->with('error', 'Paiement non confirmé. Veuillez réessayer.');
@@ -99,6 +99,8 @@ class CheckoutController extends Controller
                 'quantity' => $product->pivot->quantity,
                 'price'    => $product->price,
             ]);
+
+            $product->decrement('stock', $product->pivot->quantity);
         }
 
         $user->cart()->detach();
